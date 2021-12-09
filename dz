@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+void polindrom() {
+	char text[10000];
+	cin.getline(text, 10000);
+	int size = 0;
+	while (text[size] != '\0') {
+		size++;
+	}
+	cout << endl;
+	size = size - 1;
+	int i = 0;
+	int j;
+	while (i <= size / 2) {
+		if (text[i] != text[size - i]) {
+			j = 0;
+			break;
+		}
+		else {
+			i++;
+			j = 1;
+
+		}
+	}
+	if (j == 0) cout << "не полиндром"; 
+	if (j==1) cout << "полиндром";
+} 
+void summa() {
+	char text[10000];
+	cin.getline(text, 10000);
+	int a=0;
+	int b = 0;
+	int i = 0;
+	while (text[i] != '\0') {
+		if (text[i] != '+') {
+			a = a * 10 + text[i] - '0';
+			i++;
+		}
+		if (text[i] == '+') {
+			b = b + a;
+			i++;
+			a = 0;
+		}
+	} 
+	cout << b+a;
+}
+void name() {
+	char text[100];
+	char s1[100];
+	cin.getline(text, 100);
+	int i = 0;
+	int flag = 0;
+	int l = strlen(text);
+	int size = 0;
+	while (i<l) {
+		if (text[i] != ' ' && flag != 1) {
+			s1[i] = text[i];
+			size = i;
+		}
+		if (text[i] == ' ') {
+			cout << text[i + 1] << ". ";
+			flag = 1;
+		}
+		i++;
+	}
+	int j = 0;
+	while (j<size + 1) {
+		cout << s1[j];
+		j++;
+	}
+}
+int main() {
+	setlocale(LC_ALL, "Russian");
+  polindrom();
+  cout << endl;
+  summa();
+  cout << endl;
+	name();
+	system("pause");
+	return 0;
+}
